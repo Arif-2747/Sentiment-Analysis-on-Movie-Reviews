@@ -51,7 +51,7 @@ Prerequisites
 --------------
 Before running the script, ensure you have the following installed:
 
-  - Python 3.x
+  - Python 3.13.5
 
   - pip (Python package installer)
 
