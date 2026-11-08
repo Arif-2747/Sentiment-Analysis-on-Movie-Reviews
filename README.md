@@ -39,6 +39,8 @@ Features
 
 **TF-IDF Vectorisation:** Converts text data into numerical feature vectors.
 
+**SMOTE Oversampling (imbalanced-learn):** Balances class distributions on training data using Synthetic Minority Over-sampling Technique.
+
 **Logistic Regression Model:** A simple yet effective classification model for sentiment prediction.
 
 **Model Evaluation:** Calculates and prints accuracy and a detailed classification report.
@@ -59,7 +61,7 @@ Installation
 -------------
 **1. Install required Python libraries:**
       
-      pip install pandas numpy scikit-learn nltk matplotlib
+      pip install pandas numpy scikit-learn nltk matplotlib imbalanced-learn
 
 
 **2. Download NLTK datasets:**

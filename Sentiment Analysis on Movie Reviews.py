@@ -8,6 +8,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score
+from imblearn.over_sampling import SMOTE
 import matplotlib.pyplot as plt
 
 # Ensure required NLTK datasets are downloaded
@@ -58,9 +59,20 @@ y = df['sentiment']
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+# Apply SMOTE to handle any class imbalance in training data
+print("Training class distribution before SMOTE:")
+print(pd.Series(y_train).value_counts())
+
+smote = SMOTE(random_state=42)
+X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
+
+print("\nTraining class distribution after SMOTE:")
+print(pd.Series(y_train_resampled).value_counts())
+print("-" * 50)
+
 # Create and train the model
 model = LogisticRegression()
-model.fit(X_train, y_train)
+model.fit(X_train_resampled, y_train_resampled)
 
 # Make predictions
 y_pred = model.predict(X_test)
